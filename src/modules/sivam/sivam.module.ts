@@ -4,6 +4,7 @@ import { ValidationsModule } from './validations/validations.module';
 import { Invoice } from './validations/entities/invoice.entity';
 import { Applicant } from './validations/entities/applicant.entity';
 import { ApplicantType } from './validations/entities/applicant-type.entity';
+import { Validation } from './validations/entities/validation.entity';
 
 @Module({
     imports: [
@@ -17,7 +18,7 @@ import { ApplicantType } from './validations/entities/applicant-type.entity';
             name: 'SivamConnection',
             username: 'sistemas',
             database: 'validaciones',
-            entities: [Invoice, Applicant, ApplicantType],
+            entities: [Invoice, Applicant, ApplicantType, Validation],
         }),
         ValidationsModule,    
     ],

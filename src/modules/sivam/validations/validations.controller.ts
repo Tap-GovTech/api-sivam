@@ -20,9 +20,7 @@ export class ValidationsController {
           "message": "Requirentes recuperados con éxito",
           "facturas": response
       });
-    }).catch(response => {
-      console.log('error: ', response);
-      
+    }).catch(response => {      
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
             "statusCode": HttpStatus.INTERNAL_SERVER_ERROR,
             "message": "Error en el servidor",
@@ -35,11 +33,10 @@ export class ValidationsController {
   // @UseGuards(GuardsModule)
   findAll(
     @Res() res: Response,
-    @Query('idvalidacion') idvalidacion: number,    
+    @Query('folio') folio: string,
+    @Query('year') year: number,
   ) {    
-    return this.validationsService.findAll(idvalidacion).then( (response: Invoice[]) => {   
-      console.log('invoices: ', response);
-               
+    return this.validationsService.findAllInovices(folio, year).then( (response: Invoice[]) => {                        
       return res.status(HttpStatus.OK).json({
           "statusCode": HttpStatus.OK,
           "message": "Facturas recuperadas con éxito",
